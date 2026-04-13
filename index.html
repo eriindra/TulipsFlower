@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="img/flowers.jpg" type="image/x-icon">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='12' fill='%23FFD700'/><ellipse cx='50' cy='25' rx='10' ry='18' fill='%23fff' opacity='.9'/><ellipse cx='50' cy='75' rx='10' ry='18' fill='%23fff' opacity='.9'/><ellipse cx='25' cy='50' rx='18' ry='10' fill='%23fff' opacity='.9'/><ellipse cx='75' cy='50' rx='18' ry='10' fill='%23fff' opacity='.9'/><ellipse cx='32' cy='32' rx='10' ry='18' fill='%23fff' opacity='.85' transform='rotate(45 32 32)'/><ellipse cx='68' cy='32' rx='10' ry='18' fill='%23fff' opacity='.85' transform='rotate(-45 68 32)'/><ellipse cx='32' cy='68' rx='10' ry='18' fill='%23fff' opacity='.85' transform='rotate(-45 32 68)'/><ellipse cx='68' cy='68' rx='10' ry='18' fill='%23fff' opacity='.85' transform='rotate(45 68 68)'/></svg>" type="image/svg+xml">
     <title>Tulips</title>
 </head>
 <body class="container">
@@ -319,10 +319,36 @@
     </div>
     
     <script src="main.js"></script>
-  </body>
-</html>
-    <script  src="./script.js"></script>
+
+    <!-- Audio dengan start detik 50 + fade in -->
+    <audio id="bg-music" src="flower.mp3"></audio>
+    <script>
+      window.addEventListener('load', () => {
+        const audio = document.getElementById('bg-music');
+        audio.currentTime = 50;
+        audio.volume = 0;
+        audio.play().then(() => {
+          let vol = 0;
+          const fadeIn = setInterval(() => {
+            vol += 0.02;
+            if (vol >= 1) { vol = 1; clearInterval(fadeIn); }
+            audio.volume = vol;
+          }, 100);
+        }).catch(() => {
+          // Autoplay diblokir browser, tunggu interaksi user
+          document.addEventListener('click', () => {
+            audio.play().then(() => {
+              let vol = 0;
+              const fadeIn = setInterval(() => {
+                vol += 0.02;
+                if (vol >= 1) { vol = 1; clearInterval(fadeIn); }
+                audio.volume = vol;
+              }, 100);
+            });
+          }, { once: true });
+        });
+      });
+    </script>
 
   </body>
-  
 </html>
