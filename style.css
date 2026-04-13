@@ -20,6 +20,12 @@ body {
   perspective: 1000px;
 }
 
+@media (max-width: 600px) {
+  body {
+    align-items: center;
+  }
+}
+
 .night {
   position: fixed;
   left: 50%;
@@ -40,7 +46,7 @@ body {
 /* Layar HP sedang (lebar < 600px) */
 @media (max-width: 600px) {
   .flowers {
-    transform: scale(0.75);
+    transform: scale(1.1);
     transform-origin: bottom center;
   }
 }
@@ -48,7 +54,7 @@ body {
 /* Layar HP kecil (< 400px) */
 @media (max-width: 400px) {
   .flowers {
-    transform: scale(0.62);
+    transform: scale(0.95);
     transform-origin: bottom center;
   }
 }
