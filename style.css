@@ -36,18 +36,20 @@ body {
   transform: scale(0.9);
 }
 
-/* Perbesar tampilan di layar HP (lebar < 600px) */
 @media (max-width: 600px) {
+  html, body {
+    overflow: hidden !important;
+    max-width: 100vw;
+  }
   .flowers {
-    transform: scale(1.6);
+    transform: scale(1.3);
     transform-origin: bottom center;
   }
 }
 
-/* Layar sangat kecil (< 400px) */
 @media (max-width: 400px) {
   .flowers {
-    transform: scale(1.9);
+    transform: scale(1.15);
     transform-origin: bottom center;
   }
 }
